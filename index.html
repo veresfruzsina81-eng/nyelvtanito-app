@@ -13,23 +13,20 @@
       <p>Tölts fel képet, vagy készíts egyedi kék manó-maszkot, és játszd le a mesét felolvasással!</p>
     </header>
 
-    <!-- Diag sáv -->
-    <div id="diag" style="padding:8px 12px;background:#fff4cc;color:#7a5b00;border-bottom:1px solid #e6d28a;font-family:monospace">
-      Betöltés…
-    </div>
+    <div id="diag">Betöltés…</div>
 
     <section id="controls">
       <div class="row">
         <label class="file">
           <input type="file" id="fileInput" accept="image/*">
-          Saját kép feltöltése
+          Saját kép kiválasztása
         </label>
 
-        <button id="genMascot">Cuki maszkot kérek</button>
+        <button id="makeChar" disabled>📸 Képből karakter</button>
+        <button id="genMascot">🧿 Cuki maszkot kérek</button>
         <button id="testBtn" title="Gyors ellenőrzés">🧪 Teszt</button>
 
-        <label>
-          Háttér:
+        <label>Háttér:
           <select id="bgSelect">
             <option value="forest">Erdő</option>
             <option value="space">Űr</option>
@@ -37,8 +34,7 @@
           </select>
         </label>
 
-        <label>
-          Akcentus (felolvasás):
+        <label>Akcentus (felolvasás):
           <select id="accent">
             <option value="hu-HU">Magyar</option>
             <option value="en-GB">English (UK)</option>
@@ -51,7 +47,21 @@
       </div>
 
       <div class="row">
-        <textarea id="story" rows="4" placeholder="Írd ide a mesét / narrációt..."></textarea>
+        <label>Főhős neve: <input id="heroName" placeholder="pl. Kiara"></label>
+        <label>Életkor: <input id="heroAge" type="number" min="3" max="12" style="width:80px" value="6"></label>
+        <label>Barát/állat: <input id="heroBuddy" placeholder="pl. kis delfin"></label>
+        <label>Világ/téma:
+          <select id="heroWorld">
+            <option value="erdei kaland">erdei kaland</option>
+            <option value="tengerparti nap">tengerparti nap</option>
+            <option value="űrutazás">űrutazás</option>
+            <option value="varázsmező">varázsmező</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="row">
+        <textarea id="story" rows="5" placeholder="Írd ide a mesét / narrációt... vagy generáld le alább."></textarea>
       </div>
 
       <div class="row">
@@ -65,8 +75,7 @@
 
         <div class="group">
           <strong>Automata mese:</strong>
-          <label>
-            Hossz:
+          <label>Hossz:
             <select id="storyMinutes">
               <option value="1">1 perc</option>
               <option value="2">2 perc</option>
@@ -92,12 +101,17 @@
 
     <main id="stageWrap"></main>
 
+    <!-- Teljes képernyős vezérlősáv lejátszáskor -->
+    <div id="overlayBar">
+      <button id="exitPlay">⏹ Megállít & vissza az irányítópulthoz</button>
+    </div>
+
     <footer>
       <small>Megjegyzés: a „Stitch” és más ismert karakterek jogvédettek. Ez az app saját, eredeti maszkot készít.</small>
     </footer>
   </div>
 
-  <!-- FONTOS: előbb Pixi, utána a saját kód (defer nélkül, a body végén) -->
+  <!-- Pixi a body végén, majd saját kód -->
   <script src="https://unpkg.com/pixi.js@7.4.2/dist/pixi.min.js"></script>
   <script src="app.js"></script>
 </body>
