@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nyelvtanító App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>🌍 Nyelvtanító Asszisztens</h1>
+      <p>Több nyelven, játékosan tanulhatsz!</p>
+    </header>
+
+    <!-- Nyelvválasztás -->
+    <section id="language-select">
+      <label for="lang">Válassz nyelvet:</label>
+      <select id="lang">
+        <option value="en">Angol</option>
+        <option value="de">Német</option>
+        <option value="es">Spanyol</option>
+      </select>
+    </section>
+
+    <!-- Chat ablak -->
+    <main id="chat-box">
+      <div class="message bot">Szia! Válassz nyelvet és kezdjük a tanulást. 👋</div>
+    </main>
+
+    <!-- Üzenet beírás -->
+    <footer id="input-area">
+      <input type="text" id="user-input" placeholder="Írd ide az üzeneted...">
+      <button id="send-btn">Küldés</button>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
