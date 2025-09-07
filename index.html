@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Animált Mese – Saját Karakterrel</title>
   <link rel="stylesheet" href="style.css">
-  <!-- FONTOS: előbb Pixi, mindkettő DEFER -->
-  <script src="https://pixijs.download/release/pixi.min.js" defer></script>
-  <script src="app.js" defer></script>
 </head>
 <body>
   <div id="app">
@@ -15,6 +12,11 @@
       <h1>🎬 Animált Mese</h1>
       <p>Tölts fel képet, vagy készíts egyedi kék manó-maszkot, és játszd le a mesét felolvasással!</p>
     </header>
+
+    <!-- Diag sáv -->
+    <div id="diag" style="padding:8px 12px;background:#fff4cc;color:#7a5b00;border-bottom:1px solid #e6d28a;font-family:monospace">
+      Betöltés…
+    </div>
 
     <section id="controls">
       <div class="row">
@@ -24,6 +26,7 @@
         </label>
 
         <button id="genMascot">Cuki maszkot kérek</button>
+        <button id="testBtn" title="Gyors ellenőrzés">🧪 Teszt</button>
 
         <label>
           Háttér:
@@ -93,5 +96,9 @@
       <small>Megjegyzés: a „Stitch” és más ismert karakterek jogvédettek. Ez az app saját, eredeti maszkot készít.</small>
     </footer>
   </div>
+
+  <!-- FONTOS: előbb Pixi, utána a saját kód (defer nélkül, a body végén) -->
+  <script src="https://unpkg.com/pixi.js@7.4.2/dist/pixi.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
