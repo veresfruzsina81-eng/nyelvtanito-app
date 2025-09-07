@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Animált Mese – Saját Karakterrel</title>
   <link rel="stylesheet" href="style.css">
-  <!-- PixiJS a canvas animációhoz -->
-  <script src="https://pixijs.download/release/pixi.min.js"></script>
+  <!-- FONTOS: előbb Pixi, mindkettő DEFER -->
+  <script src="https://pixijs.download/release/pixi.min.js" defer></script>
+  <script src="app.js" defer></script>
 </head>
 <body>
   <div id="app">
@@ -51,24 +52,46 @@
       </div>
 
       <div class="row">
+        <div class="group">
+          <strong>Animációk:</strong>
+          <label><input type="checkbox" id="anim-wave" checked> 👋 Integetés</label>
+          <label><input type="checkbox" id="anim-walk" checked> 🚶‍♂️ Séta</label>
+          <label><input type="checkbox" id="anim-jump" checked> 🦘 Ugrás</label>
+          <label><input type="checkbox" id="anim-dance" checked> 💃 Tánc</label>
+        </div>
+
+        <div class="group">
+          <strong>Automata mese:</strong>
+          <label>
+            Hossz:
+            <select id="storyMinutes">
+              <option value="1">1 perc</option>
+              <option value="2">2 perc</option>
+              <option value="3" selected>3 perc</option>
+              <option value="4">4 perc</option>
+              <option value="5">5 perc</option>
+            </select>
+          </label>
+          <button id="autoStory">🪄 Mese generálása</button>
+        </div>
+      </div>
+
+      <div class="row">
         <button id="playStory">▶ Mese lejátszása (felolvasás + animáció)</button>
         <button id="waveBtn">👋 Integetés</button>
         <button id="walkBtn">🚶‍♂️ Séta</button>
         <button id="jumpBtn">🦘 Ugrás</button>
+        <button id="danceBtn">💃 Tánc</button>
         <button id="talkBtn">🗣️ Beszéd (szájszinkron)</button>
         <button id="stopAll">⏹ Megállít</button>
       </div>
     </section>
 
-    <main id="stageWrap">
-      <!-- Ide kerül a PIXI vászon -->
-    </main>
+    <main id="stageWrap"></main>
 
     <footer>
       <small>Megjegyzés: a „Stitch” és más ismert karakterek jogvédettek. Ez az app saját, eredeti maszkot készít.</small>
     </footer>
   </div>
-
-  <script src="app.js"></script>
 </body>
 </html>
