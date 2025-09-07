@@ -32,7 +32,7 @@ header p{ margin:4px 0 0; opacity:.9; }
 #stageWrap{
   flex: 1;
   position: relative;
-  min-height: 420px;          /* fontos, hogy látszódjon a vászon */
+  min-height: 420px;
 }
 #stageWrap canvas{
   display: block;
