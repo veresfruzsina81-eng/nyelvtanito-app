@@ -3,69 +3,70 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nyelvtanító Asszisztens</title>
+  <title>Animált Mese – Saját Karakterrel</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Gyors alap stílus – ha már van style.css-ed, ez csak kiegészítés */
-    body{margin:0;font-family:Arial,system-ui,Segoe UI,Roboto,sans-serif;background:linear-gradient(135deg,#74ebd5,#9face6);display:flex;justify-content:center;align-items:center;min-height:100vh;color:#333}
-    #app{background:rgba(255,255,255,.92);border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.2);width:92%;max-width:680px;display:flex;flex-direction:column;overflow:hidden}
-    header{background:#1f6fe0;color:#fff;text-align:center;padding:16px}
-    header h1{margin:0;font-size:1.4rem}
-    header p{margin:.25rem 0 0;opacity:.9}
-    #chat-box{flex:1;padding:16px;overflow-y:auto;background:#fff}
-    .message{margin:8px 0;padding:10px 14px;border-radius:12px;max-width:80%}
-    .message.bot{background:#e8f0fe;align-self:flex-start}
-    .message.user{background:#ffd580;align-self:flex-end}
-    #lesson-controls{padding:12px;background:#f7f7f9;border-top:1px solid #e6e6ef}
-    #lesson-controls .row{display:flex;gap:10px;align-items:center;margin:8px 0;flex-wrap:wrap}
-    #lesson-controls button{background:#1f6fe0;color:#fff;border:none;padding:8px 14px;border-radius:8px;cursor:pointer}
-    #lesson-controls button[disabled]{opacity:.6;cursor:default}
-    #answer-area{margin-top:8px}
-    #answer-area.hidden{display:none}
-    #answer-input{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px}
-    label{font-weight:600}
-    select{padding:8px;border-radius:8px;border:1px solid #ddd;background:#fff}
-  </style>
+  <!-- PixiJS a canvas animációhoz -->
+  <script src="https://pixijs.download/release/pixi.min.js"></script>
 </head>
 <body>
   <div id="app">
     <header>
-      <h1>🌍 Nyelvtanító Asszisztens</h1>
-      <p>Több nyelven, játékosan — vezetett leckékkel</p>
+      <h1>🎬 Animált Mese</h1>
+      <p>Tölts fel képet, vagy készíts egyedi kék manó-maszkot, és játszd le a mesét felolvasással!</p>
     </header>
 
-    <main id="chat-box">
-      <div class="message bot">Szia! Válaszd ki a nyelvet és a szintet, majd indítsd a leckét. 👋</div>
-    </main>
-
-    <!-- Vezetett lecke vezérlők (nincs szabad kérdezés) -->
-    <section id="lesson-controls">
+    <section id="controls">
       <div class="row">
-        <label for="lang">Válassz nyelvet:</label>
-        <select id="lang">
-          <option value="en">Angol</option>
-          <option value="de">Német</option>
-          <option value="es">Spanyol</option>
-        </select>
+        <label class="file">
+          <input type="file" id="fileInput" accept="image/*">
+          Saját kép feltöltése
+        </label>
 
-        <label for="level">Szint:</label>
-        <select id="level">
-          <option value="A1">A1 – Kezdő</option>
-          <option value="A2">A2 – Alap</option>
-          <option value="B1">B1 – Középhaladó</option>
-        </select>
+        <button id="genMascot">Cuki maszkot kérek</button>
+
+        <label>
+          Háttér:
+          <select id="bgSelect">
+            <option value="forest">Erdő</option>
+            <option value="space">Űr</option>
+            <option value="beach">Tengerpart</option>
+          </select>
+        </label>
+
+        <label>
+          Akcentus (felolvasás):
+          <select id="accent">
+            <option value="hu-HU">Magyar</option>
+            <option value="en-GB">English (UK)</option>
+            <option value="en-US">English (US)</option>
+            <option value="de-DE">Deutsch (DE)</option>
+            <option value="es-ES">Español (ES)</option>
+            <option value="es-MX">Español (MX)</option>
+          </select>
+        </label>
       </div>
 
       <div class="row">
-        <button id="start-lesson">Lecke indítása</button>
-        <button id="next-step" disabled>Következő</button>
-        <button id="check-answer" disabled>Ellenőrzés</button>
+        <textarea id="story" rows="4" placeholder="Írd ide a mesét / narrációt..."></textarea>
       </div>
 
-      <div id="answer-area" class="hidden">
-        <input id="answer-input" type="text" placeholder="Írd ide a válaszod…">
+      <div class="row">
+        <button id="playStory">▶ Mese lejátszása (felolvasás + animáció)</button>
+        <button id="waveBtn">👋 Integetés</button>
+        <button id="walkBtn">🚶‍♂️ Séta</button>
+        <button id="jumpBtn">🦘 Ugrás</button>
+        <button id="talkBtn">🗣️ Beszéd (szájszinkron)</button>
+        <button id="stopAll">⏹ Megállít</button>
       </div>
     </section>
+
+    <main id="stageWrap">
+      <!-- Ide kerül a PIXI vászon -->
+    </main>
+
+    <footer>
+      <small>Megjegyzés: a „Stitch” és más ismert karakterek jogvédettek. Ez az app saját, eredeti maszkot készít.</small>
+    </footer>
   </div>
 
   <script src="app.js"></script>
