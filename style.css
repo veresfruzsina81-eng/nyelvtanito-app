@@ -1,0 +1,88 @@
+/* Alap színek és betűk */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #74ebd5, #9face6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #333;
+}
+
+/* Fő keret */
+#app {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Fejléc */
+header {
+  background: #4a90e2;
+  color: white;
+  text-align: center;
+  padding: 16px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+/* Nyelvválasztás */
+#language-select {
+  padding: 10px;
+  text-align: center;
+  background: #f0f0f0;
+}
+
+/* Chatbox */
+#chat-box {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.message {
+  margin: 8px 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 75%;
+}
+
+.message.bot {
+  background: #e8f0fe;
+  align-self: flex-start;
+}
+
+.message.user {
+  background: #ffd580;
+  align-self: flex-end;
+}
+
+/* Beviteli rész */
+#input-area {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+#user-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+#send-btn {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+}
