@@ -86,3 +86,10 @@ header h1 {
   padding: 10px 16px;
   cursor: pointer;
 }
+#lesson-controls { padding: 12px; background:#f7f7f9; border-top:1px solid #e6e6ef; }
+#lesson-controls .row { display:flex; gap:10px; align-items:center; margin:8px 0; flex-wrap:wrap; }
+#lesson-controls button { background:#4a90e2; color:#fff; border:none; padding:8px 14px; border-radius:8px; cursor:pointer; }
+#lesson-controls button[disabled] { opacity:.6; cursor:default; }
+#answer-area { margin-top:8px; }
+#answer-area.hidden { display:none; }
+#answer-input { width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; }
