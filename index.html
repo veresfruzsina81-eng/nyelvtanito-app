@@ -1,168 +1,276 @@
 <!doctype html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Szőke Épker Kft.</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Szőke Épker KFT. – Minőség kompromisszumok nélkül</title>
+  <meta name="description" content="Generálkivitelezés, családi ház és társasház építés, felújítás, homlokzati szigetelés, térkövezés, burkolás és festés — országosan, megbízható csapattal.">
+  <link rel="icon" href="assets/icons/favicon-32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      line-height: 1.6;
-      color: #333;
-      background: #fff;
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --brand:#0ea5e9; /* világos kék akcentus */
+      --brand-dark:#0284c7;
+      --surface:#f8fafc; /* nagyon halvány szürke panel */
+      --border:#e5e7eb;
+      --shadow:0 8px 20px rgba(0,0,0,.06);
+      --radius:16px;
+      --container:1200px;
     }
-    header {
-      background: #fff;
-      border-bottom: 1px solid #eee;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    img{max-width:100%;display:block;border-radius:12px}
+    .container{max-width:var(--container);margin-inline:auto;padding:0 20px}
+    header{
+      position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border);
+      backdrop-filter:saturate(1.2) blur(6px)
     }
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: auto;
-      overflow: hidden;
-      padding: 0 20px;
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .brand .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#38bdf8,#0ea5e9)}
+    .nav a{color:var(--text);font-weight:600;margin-left:18px}
+    .nav a:hover{color:var(--brand-dark)}
+    /* Hero */
+    .hero{padding:64px 0;background:var(--surface);border-bottom:1px solid var(--border)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+    .kicker{display:inline-block;background:#e0f2fe;color:#075985;font-weight:700;padding:6px 10px;border-radius:999px;margin-bottom:12px}
+    h1{font-size:clamp(28px,4vw,44px);line-height:1.1;margin:0 0 16px}
+    .lead{color:var(--muted);margin-bottom:22px}
+    .btns{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:700;border:1px solid var(--border);box-shadow:var(--shadow)}
+    .btn.primary{background:var(--brand);color:#fff;border-color:transparent}
+    .btn.primary:hover{background:var(--brand-dark)}
+    .panel{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    /* Chips */
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .chip{background:#f1f5f9;color:#0f172a;padding:8px 12px;border-radius:999px;border:1px solid var(--border);font-weight:600}
+    /* Sections */
+    section{padding:56px 0}
+    h2{font-size:clamp(22px,3vw,32px);margin:0 0 16px}
+    .sub{color:var(--muted);margin-top:-6px}
+    /* Steps */
+    .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+    .step{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px}
+    .step b{display:block;margin-bottom:6px}
+    /* Cards */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    /* Form */
+    form{display:grid;gap:12px}
+    input,textarea{
+      width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:#fff;font:inherit
     }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 0;
+    textarea{min-height:120px;resize:vertical}
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .contact-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .badge-link{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--border);border-radius:12px}
+    /* Footer */
+    footer{padding:28px 0;border-top:1px solid var(--border);color:var(--muted);background:#fff}
+    /* Floating FB button */
+    .fb-float{
+      position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:50%;
+      background:#1877f2;display:grid;place-items:center;box-shadow:0 8px 22px rgba(24,119,242,.35);z-index:60
     }
-    nav a {
-      color: #333;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: bold;
+    .fb-float svg{width:26px;height:26px;fill:#fff}
+    .fb-float:hover{transform:translateY(-1px)}
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .cards,.gallery,.contact-grid{grid-template-columns:1fr}
     }
-    nav a:hover {
-      color: #0077cc;
-    }
-    .hero {
-      padding: 120px 20px 80px;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      color: #666;
-    }
-    .hero button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      border: none;
-      background: #0077cc;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    .section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
-    }
-    .card {
-      border: 1px solid #eee;
-      padding: 20px;
-      border-radius: 8px;
-      background: #fafafa;
-    }
-    .contact form {
-      max-width: 500px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    input, textarea {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-    button.submit {
-      background: #0077cc;
-      color: white;
-      border: none;
-      padding: 12px;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    footer {
-      background: #f5f5f5;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #666;
+    @media (max-width: 560px){
+      .steps{grid-template-columns:1fr}
+      .nav .links{display:none}
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <nav>
-      <div class="logo"><strong>Szőke Épker KFT.</strong></div>
-      <div>
-        <a href="#services">Szolgáltatások</a>
-        <a href="#about">Rólunk</a>
-        <a href="#contact">Kapcsolat</a>
+  <!-- Lebegő Facebook gomb (linkeld a saját FB / Messenger URL-t) -->
+  <a class="fb-float" href="https://facebook.com" target="_blank" aria-label="Facebook">
+    <!-- egyszerű FB ikon -->
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.49 17.52 2 12 2S2 6.49 2 12.06c0 5.01 3.66 9.16 8.44 9.94v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.9 3.77-3.9 1.09 0 2.24.19 2.24.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.77l-.44 2.9h-2.33V22c4.78-.78 8.44-4.93 8.44-9.94z"/></svg>
+  </a>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Szőke Épker KFT.</span>
       </div>
-    </nav>
-  </div>
-</header>
+      <nav class="links" aria-label="Fő navigáció">
+        <a href="#szolgaltatasok">Szolgáltatások</a>
+        <a href="#ismerj-meg">Ismerj meg minket</a>
+        <a href="#ajanlat">Ajánlatkérés</a>
+        <a href="#rolunk">Rólunk</a>
+        <a href="#epitoanyagok">Építőanyagok</a>
+        <a href="#galeria">Galéria</a>
+        <a href="#kapcsolat">Kapcsolat</a>
+      </nav>
+    </div>
+  </header>
 
-<section class="hero">
-  <h1>Minőség kompromisszumok nélkül</h1>
-  <p>Építőipari megoldások, amelyek tartósak és esztétikusak.</p>
-  <button>Ajánlatkérés</button>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="kicker">Professzionális csapat</span>
+        <h1>Minőség kompromisszumok nélkül</h1>
+        <p class="lead">
+          Generálkivitelezés, családi és társasházi építés, felújítás, homlokzati szigetelés,
+          térkövezés, burkolás és festés. Megbízható csapat, pontos határidők, átlátható ajánlatadás.
+        </p>
+        <div class="btns">
+          <a class="btn primary" href="#ajanlat">Ingyenes ajánlatkérés</a>
+          <a class="btn" href="#galeria">Referenciák</a>
+        </div>
+        <div class="chips" id="szolgaltatasok">
+          <span class="chip">Térkövezés és burkolás</span>
+          <span class="chip">Generálkivitelezés</span>
+          <span class="chip">Homlokzati szigetelés</span>
+          <span class="chip">Festés, lakásfelújítás</span>
+        </div>
+      </div>
+      <div>
+        <!-- hős kép – cseréld sajátodra -->
+        <img src="hero.jpg" alt="Építkezésen dolgozó csapat">
+      </div>
+    </div>
+  </section>
 
-<section id="services" class="section">
-  <h2>Szolgáltatásaink</h2>
-  <div class="grid">
-    <div class="card">Térkövezés és burkolás</div>
-    <div class="card">Generálkivitelezés</div>
-    <div class="card">Homlokzati szigetelés</div>
-    <div class="card">Festés, lakásfelújítás</div>
-  </div>
-</section>
+  <!-- ISMERJ MEG -->
+  <section id="ismerj-meg">
+    <div class="container">
+      <h2>Ismerj meg minket jobban</h2>
+      <p class="sub">Egyszerű, átlátható folyamat az első megkereséstől az átadásig.</p>
+      <div class="steps" style="margin-top:16px">
+        <div class="step"><b>1. Felmérés</b>Kimegyünk a helyszínre, pontosítjuk az igényeket.</div>
+        <div class="step"><b>2. Árajánlat</b>Tételes, átlátható ajánlat határidőkkel.</div>
+        <div class="step"><b>3. Előkészítés</b>Beszerzés, ütemezés, munkaterület átadás.</div>
+        <div class="step"><b>4. Kivitelezés</b>Minőség-ellenőrzött munkafolyamatok.</div>
+        <div class="step"><b>5. Átadás</b>Tiszta helyszín, garanciális dokumentumok.</div>
+      </div>
 
-<section id="about" class="section">
-  <h2>Rólunk</h2>
-  <p>Célunk, hogy megbízható és magas minőségű építőipari szolgáltatásokat nyújtsunk ügyfeleinknek.</p>
-</section>
+      <div class="cards" style="margin-top:22px">
+        <div class="panel">
+          <img src="team.jpg" alt="Összeszokott csapat a helyszínen">
+          <b>Csapatunk</b>
+          <p class="sub">Összeszokott szakemberek, országos jelenlét.</p>
+        </div>
+        <div class="panel">
+          <img src="helyszini-munka.jpg" alt="Biztonságos helyszíni munka">
+          <b>Helyszíni munka</b>
+          <p class="sub">Biztonságos munkavégzés, tiszta átadás.</p>
+        </div>
+        <div class="panel">
+          <img src="referencia.jpg" alt="Referencia munkák">
+          <b>Referencia</b>
+          <p class="sub">Visszatérő ügyfelek és ajánlások.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="contact" class="section contact">
-  <h2>Kapcsolat</h2>
-  <form>
-    <input type="text" placeholder="Név" required>
-    <input type="email" placeholder="Email cím" required>
-    <input type="tel" placeholder="Telefonszám" required>
-    <textarea rows="5" placeholder="Üzenet"></textarea>
-    <button type="submit" class="submit">Üzenet küldése</button>
-  </form>
-</section>
+  <!-- AJÁNLATKÉRÉS -->
+  <section id="ajanlat" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div class="panel">
+        <h2>Kérjen ingyenes ajánlatot</h2>
+        <form name="ajanlat" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="ajanlat">
+          <input name="name" type="text" placeholder="Név" required>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <input name="email" type="email" placeholder="E-mail" required>
+            <input name="phone" type="tel" placeholder="Telefon" required>
+          </div>
+          <input name="address" type="text" placeholder="Cím (opcionális)">
+          <textarea name="message" placeholder="Munka rövid leírása" required></textarea>
+          <button class="btn primary" type="submit">Elküldés</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  <p>&copy; 2024 Szőke Épker Kft. Minden jog fenntartva.</p>
-</footer>
+  <!-- RÓLUNK -->
+  <section id="rolunk">
+    <div class="container">
+      <h2>Bemutatkozás</h2>
+      <p class="sub">
+        A Szőke Épker Kft. több éves tapasztalattal vállal teljes körű generálkivitelezést, családi házak és társasházak építését, felújítást,
+        homlokzati szigetelést, térkövezést, burkolást és festést. Célunk, hogy ügyfeleink elégedetten vehessék birtokba ingatlanaikat —
+        a tervezéstől a kulcsátadásig számíthat ránk. Nincsenek rejtett költségek vagy csúszó határidők: amit ígérünk, azt megcsináljuk.
+      </p>
+    </div>
+  </section>
 
+  <!-- ÉPÍTŐANYAGOK -->
+  <section id="epitoanyagok" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="container">
+      <h2>Építőanyagok</h2>
+      <p class="sub">Hamarosan elérhető online kínálatunk. Dolgozunk a webshopon — addig is kérjen ajánlatot az elérhetőségeinken!</p>
+    </div>
+  </section>
+
+  <!-- GALÉRIA -->
+  <section id="galeria">
+    <div class="container">
+      <h2>Galéria</h2>
+      <div class="gallery" style="margin-top:14px">
+        <img src="galeria1.jpg" alt="Kivitelezési fotó 1">
+        <img src="galeria2.jpg" alt="Kivitelezési fotó 2">
+        <img src="galeria3.jpg" alt="Kivitelezési fotó 3">
+      </div>
+    </div>
+  </section>
+
+  <!-- KAPCSOLAT -->
+  <section id="kapcsolat" style="background:var(--surface);border-top:1px solid var(--border)">
+    <div class="container contact-grid">
+      <div class="panel">
+        <h2>Kapcsolat</h2>
+        <p><b>Cím:</b> 4100 Berettyóújfalu, Dózsa György utca 6 1/3</p>
+        <p><b>Telefon:</b> <a href="tel:+36706070675">+36 70 607 0675</a></p>
+        <p><b>E-mail:</b> <a href="mailto:iroda@dgs-general.com">iroda@dgs-general.com</a></p>
+        <p><b>Web:</b> <a href="https://dgs-general.com" target="_blank" rel="noopener">dgs-general.com</a></p>
+        <div class="contact-actions">
+          <a class="badge-link" href="tel:+36706070675">📞 Hívás</a>
+          <a class="badge-link" href="#ajanlat">✉️ Küldjön üzenetet</a>
+          <a class="badge-link" href="https://facebook.com" target="_blank">𝔽 Facebook oldalunk</a>
+        </div>
+      </div>
+      <div class="panel" aria-label="Térkép">
+        <!-- Google Maps beágyazás – cseréld a saját beágyazási kódodra -->
+        <iframe
+          src="https://www.google.com/maps?q=Beretty%C3%B3%C3%BAjfalu%2C%20D%C3%B3zsa%20Gy%C3%B6rgy%20utca%206&output=embed"
+          width="100%" height="320" style="border:0;border-radius:12px" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © <span id="y"></span> Szőke Épker KFT. – Minden jog fenntartva.
+    </div>
+  </footer>
+
+  <script>
+    // aktuális év a láblécben
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // ha szeretnéd, hogy a lebegő FB gomb ne takarja a footer-t, kicsit feljebb mozdítjuk görgetéskor
+    const fb = document.querySelector('.fb-float');
+    const onScroll = () => {
+      const atBottom = (window.innerHeight + window.scrollY) > (document.body.offsetHeight - 120);
+      fb.style.bottom = atBottom ? '86px' : '18px';
+    };
+    document.addEventListener('scroll', onScroll, {passive:true});
+  </script>
 </body>
 </html>
-
