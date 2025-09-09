@@ -1,330 +1,168 @@
 <!doctype html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Szőke Épker KFT. – Minőség kompromisszumok nélkül</title>
-  <meta name="description" content="Generálkivitelezés, térkövezés, homlokzati szigetelés, festés. Megbízható csapat, pontos határidők, átlátható ajánlatok." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Szőke Épker Kft.</title>
   <style>
-    :root{
-      --bg-dark:#0f1521;
-      --bg-darker:#0b111b;
-      --card:#121a29;
-      --text:#e9eef7;
-      --muted:#b7c0d4;
-      --brand:#2563eb;           /* kék */
-      --accent:#ff8a00;          /* narancs kiemelés */
-      --radius:16px;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      color: #333;
+      background: #fff;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg-dark);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue","Noto Sans",sans-serif}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{width:min(1100px,92%);margin-inline:auto}
-
-    /* Header */
-    header{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter:saturate(140%) blur(6px);
-      background:rgba(11,17,27,.6);
-      border-bottom:1px solid rgba(255,255,255,.06);
+    header {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{width:40px;height:40px;object-fit:contain;border-radius:10px;background:#fff}
-    .brand b{font-size:18px;white-space:nowrap}
-    .links{display:flex;gap:18px;align-items:center}
-    .links a{opacity:.9}
-    .cta{padding:10px 14px;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--accent));color:#fff;font-weight:600}
-    .hamb{display:none;background:transparent;border:0;color:#fff;font-size:26px}
-
-    /* Hero */
-    .hero{
-      position:relative;isolation:isolate;overflow:hidden;
-      background:#0b111b;
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+      overflow: hidden;
+      padding: 0 20px;
     }
-    .hero::before{
-      content:"";position:absolute;inset:0;z-index:-1;
-      background:url('epito.jpg') center/cover no-repeat;
-      opacity:.28;
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
     }
-    .hero-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:72px 0}
-    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.08);color:#cfe0ff;font-size:13px}
-    h1{margin:14px 0 10px;font-size:clamp(28px,5.2vw,46px);line-height:1.15}
-    .lead{color:var(--muted);font-size:18px}
-    .hero-cards{display:grid;gap:16px;margin-top:18px}
-    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
-    .bullets{margin:14px 0 0;padding-left:18px}
-    .bullets li{margin:6px 0}
-    .hero-img{border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}
-    .hero-img img{height:100%;min-height:320px;object-fit:cover}
-
-    /* Sections */
-    section{padding:64px 0;border-top:1px solid rgba(255,255,255,.06)}
-    .title{font-size:28px;margin:0 0 10px}
-    .subtitle{color:var(--muted);margin:0 0 28px}
-
-    /* Services list – világosabb stílus a „letisztult” hangulathoz */
-    .services{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .service{
-      display:flex;align-items:center;gap:12px;padding:16px 18px;border-radius:14px;
-      background:#0f1827;border:1px solid rgba(255,255,255,.07);
+    nav a {
+      color: #333;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
     }
-    .service .ico{font-size:22px}
-    .service b{font-size:18px}
-
-    /* About / folyamat */
-    .steps{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .step{background:var(--card);border:1px solid rgba(255,255,255,.06);padding:16px;border-radius:14px}
-
-    /* Gallery */
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .grid a{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08);transform:translateZ(0)}
-    .grid img{aspect-ratio:4/3;object-fit:cover;transition:scale .35s ease}
-    .grid a:hover img{scale:1.05}
-
-    /* Testimonials */
-    .testi{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .quote{background:var(--card);border:1px solid rgba(255,255,255,.06);padding:18px;border-radius:14px}
-
-    /* Contact */
-    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
-    .form{background:#f9fafb;border-radius:16px;color:#0b1220;padding:18px;border:1px solid #e6e8ee}
-    .form label{font-weight:600;font-size:14px}
-    .form input,.form textarea{
-      width:100%;margin:6px 0 14px;padding:12px 14px;border-radius:12px;border:1px solid #dfe3ea;background:#fff;font-size:16px
+    nav a:hover {
+      color: #0077cc;
     }
-    .form button{background:var(--accent);color:#000;font-weight:700;border:0;padding:12px 16px;border-radius:12px;cursor:pointer}
-
-    /* Footer */
-    footer{padding:26px 0;background:var(--bg-darker);color:#cbd5e1;text-align:center;border-top:1px solid rgba(255,255,255,.06)}
-
-    /* Floating Facebook button */
-    .fb-float{
-      position:fixed;right:18px;bottom:24px;z-index:40;
-      width:52px;height:52px;border-radius:50%;
-      display:grid;place-items:center;
-      background:#1877f2;color:#fff;font-size:24px;box-shadow:var(--shadow);
+    .hero {
+      padding: 120px 20px 80px;
+      text-align: center;
     }
-
-    /* Sticky CTA */
-    .sticky-cta{
-      position:fixed;left:50%;transform:translateX(-50%);
-      bottom:24px;z-index:39;padding:10px 16px;border-radius:999px;
-      background:linear-gradient(90deg,var(--brand),var(--accent));
-      color:#fff;font-weight:700;box-shadow:var(--shadow);
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
-    @media (max-width:900px){
-      .hero-wrap,.contact{grid-template-columns:1fr}
-      .services{grid-template-columns:1fr}
-      .steps{grid-template-columns:1fr}
-      .grid{grid-template-columns:repeat(2,1fr)}
-      .testi{grid-template-columns:1fr}
-      .links{display:none}
-      .hamb{display:block}
-      .mobile-menu{
-        display:none;position:absolute;inset:60px 0 auto 0;background:rgba(11,17,27,.98);border-bottom:1px solid rgba(255,255,255,.08);
-      }
-      .mobile-menu a{display:block;padding:14px 5%;border-top:1px solid rgba(255,255,255,.06)}
-      .mobile-menu .cta{display:inline-block;margin:10px 5% 14px}
+    .hero p {
+      font-size: 1.2rem;
+      color: #666;
     }
-
-    /* Scroll-reveal animációk */
-    .reveal{opacity:0;transform:translateY(22px);transition:all .6s ease}
-    .reveal.show{opacity:1;transform:none}
+    .hero button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: #0077cc;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .card {
+      border: 1px solid #eee;
+      padding: 20px;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+    .contact form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button.submit {
+      background: #0077cc;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    footer {
+      background: #f5f5f5;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #666;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <img src="logo.jpg" alt="Szőke Épker logó" onerror="this.src='https://picsum.photos/seed/logo/80/80'">
-        <b>Szőke Épker KFT.</b>
-      </div>
-      <nav class="links">
-        <a href="#szolg">Szolgáltatások</a>
-        <a href="#rolunk">Ismerj meg minket</a>
-        <a href="#galeria">Galéria</a>
-        <a href="#kapcsolat">Kapcsolat</a>
-        <a class="cta" href="#ajanlat">Ajánlatkérés</a>
-      </nav>
-      <button class="hamb" aria-label="Menü" onclick="toggleMenu()">☰</button>
-    </div>
-    <nav class="mobile-menu" id="mm">
-      <a href="#szolg" onclick="toggleMenu()">Szolgáltatások</a>
-      <a href="#rolunk" onclick="toggleMenu()">Ismerj meg minket</a>
-      <a href="#galeria" onclick="toggleMenu()">Galéria</a>
-      <a href="#kapcsolat" onclick="toggleMenu()">Kapcsolat</a>
-      <a class="cta" href="#ajanlat" onclick="toggleMenu()">Ajánlatkérés</a>
-    </nav>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container hero-wrap">
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo"><strong>Szőke Épker KFT.</strong></div>
       <div>
-        <span class="badge">🏗️ Professzionális csapat</span>
-        <h1>Minőség <span style="color:var(--accent)">kompromisszumok nélkül</span></h1>
-        <p class="lead">Generálkivitelezés, családi és társasházak építése, felújítások, homlokzati szigetelés, térkövezés és festés. Megbízható csapat, pontos határidők, átlátható ajánlatadás.</p>
-        <div class="hero-cards">
-          <div class="card reveal">
-            <b>Miért minket válasszon?</b>
-            <ul class="bullets">
-              <li>Határidő-garancia és tételes költségvetés</li>
-              <li>Minőség-ellenőrzés minden ütemnél</li>
-              <li>Rendszeres fotós előrehaladás-jelentés</li>
-              <li>Tiszta munkaterület, garanciális átadás</li>
-            </ul>
-          </div>
-          <div class="card reveal">
-            <a class="cta" href="#ajanlat">Ingyenes ajánlatkérés</a>
-          </div>
-        </div>
+        <a href="#services">Szolgáltatások</a>
+        <a href="#about">Rólunk</a>
+        <a href="#contact">Kapcsolat</a>
       </div>
-      <div class="hero-img reveal">
-        <img src="epito.jpg" alt="Építkezés"
-             onerror="this.src='https://images.unsplash.com/photo-1504306663786-1a4a91bdc5f2?q=80&w=1600&auto=format&fit=crop'">
-      </div>
-    </div>
-  </section>
+    </nav>
+  </div>
+</header>
 
-  <!-- Szolgáltatások -->
-  <section id="szolg">
-    <div class="container">
-      <h2 class="title">Szolgáltatásaink</h2>
-      <p class="subtitle">A legkeresettebb munkáink gyors elérhetőséggel.</p>
-      <div class="services">
-        <div class="service reveal"><div class="ico">🧱</div><b>Térkövezés és burkolás</b></div>
-        <div class="service reveal"><div class="ico">🏗️</div><b>Generálkivitelezés</b></div>
-        <div class="service reveal"><div class="ico">🏠</div><b>Homlokzati szigetelés</b></div>
-        <div class="service reveal"><div class="ico">🎨</div><b>Festés, lakásfelújítás</b></div>
-      </div>
-    </div>
-  </section>
+<section class="hero">
+  <h1>Minőség kompromisszumok nélkül</h1>
+  <p>Építőipari megoldások, amelyek tartósak és esztétikusak.</p>
+  <button>Ajánlatkérés</button>
+</section>
 
-  <!-- Rólunk / folyamat -->
-  <section id="rolunk">
-    <div class="container">
-      <h2 class="title">Ismerj meg minket</h2>
-      <p class="subtitle">Lépésről lépésre átlátható kivitelezés.</p>
-      <div class="steps">
-        <div class="step reveal"><b>1. Felmérés</b><br>Kimegyünk a helyszínre, pontosítjuk az igényeket.</div>
-        <div class="step reveal"><b>2. Árajánlat</b><br>Tételes, átlátható ajánlat határidőkkel.</div>
-        <div class="step reveal"><b>3. Előkészítés</b><br>Beszerzés, ütemezés, munkaterület átadás.</div>
-        <div class="step reveal"><b>4. Kivitelezés</b><br>Minőség-ellenőrzött munkafolyamatok.</div>
-        <div class="step reveal"><b>5. Átadás</b><br>Tiszta helyszín és garanciális dokumentumok.</div>
-      </div>
-    </div>
-  </section>
+<section id="services" class="section">
+  <h2>Szolgáltatásaink</h2>
+  <div class="grid">
+    <div class="card">Térkövezés és burkolás</div>
+    <div class="card">Generálkivitelezés</div>
+    <div class="card">Homlokzati szigetelés</div>
+    <div class="card">Festés, lakásfelújítás</div>
+  </div>
+</section>
 
-  <!-- Galéria -->
-  <section id="galeria">
-    <div class="container">
-      <h2 class="title">Galéria</h2>
-      <p class="subtitle">Képek nagyban nyílnak meg.</p>
-      <div class="grid">
-        <a class="reveal" href="https://picsum.photos/seed/a/1600/1200" target="_blank"><img src="https://picsum.photos/seed/a/600/450" alt=""></a>
-        <a class="reveal" href="https://picsum.photos/seed/b/1600/1200" target="_blank"><img src="https://picsum.photos/seed/b/600/450" alt=""></a>
-        <a class="reveal" href="https://picsum.photos/seed/c/1600/1200" target="_blank"><img src="https://picsum.photos/seed/c/600/450" alt=""></a>
-        <a class="reveal" href="https://picsum.photos/seed/d/1600/1200" target="_blank"><img src="https://picsum.photos/seed/d/600/450" alt=""></a>
-        <a class="reveal" href="https://picsum.photos/seed/e/1600/1200" target="_blank"><img src="https://picsum.photos/seed/e/600/450" alt=""></a>
-        <a class="reveal" href="https://picsum.photos/seed/f/1600/1200" target="_blank"><img src="https://picsum.photos/seed/f/600/450" alt=""></a>
-      </div>
-    </div>
-  </section>
+<section id="about" class="section">
+  <h2>Rólunk</h2>
+  <p>Célunk, hogy megbízható és magas minőségű építőipari szolgáltatásokat nyújtsunk ügyfeleinknek.</p>
+</section>
 
-  <!-- Ajánlatkérés blokk -->
-  <section id="ajanlat">
-    <div class="container">
-      <div class="card reveal" style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
-        <div>
-          <h3 style="margin:0 0 6px">Kérjen ingyenes ajánlatot</h3>
-          <div style="color:var(--muted)">24 órán belül felvesszük a kapcsolatot.</div>
-        </div>
-        <a class="cta" href="#kapcsolat">Ajánlatkérés</a>
-      </div>
-    </div>
-  </section>
+<section id="contact" class="section contact">
+  <h2>Kapcsolat</h2>
+  <form>
+    <input type="text" placeholder="Név" required>
+    <input type="email" placeholder="Email cím" required>
+    <input type="tel" placeholder="Telefonszám" required>
+    <textarea rows="5" placeholder="Üzenet"></textarea>
+    <button type="submit" class="submit">Üzenet küldése</button>
+  </form>
+</section>
 
-  <!-- Visszajelzések -->
-  <section>
-    <div class="container">
-      <h2 class="title">Ügyfeleink mondták</h2>
-      <div class="testi">
-        <div class="quote reveal">⭐️⭐️⭐️⭐️⭐️<br><b>„Megbízható, precíz, csak ajánlani tudom.”</b><br><small>Szabó Zoltán</small></div>
-        <div class="quote reveal">⭐️⭐️⭐️⭐️⭐️<br><b>„Az árak rendben, a kommunikáció végig profi volt.”</b><br><small>Tóth Sándor</small></div>
-        <div class="quote reveal">⭐️⭐️⭐️⭐️⭐️<br><b>„Határidőre készültek el, tiszta munkaterület.”</b><br><small>Kovács Dóra</small></div>
-      </div>
-    </div>
-  </section>
+<footer>
+  <p>&copy; 2024 Szőke Épker Kft. Minden jog fenntartva.</p>
+</footer>
 
-  <!-- Kapcsolat -->
-  <section id="kapcsolat">
-    <div class="container">
-      <h2 class="title">Kapcsolat</h2>
-      <div class="contact">
-        <form class="form reveal" onsubmit="event.preventDefault(); alert('Köszönjük! Az email címet később állítsd be a backendhez.');">
-          <label for="nev">Név</label>
-          <input id="nev" name="nev" placeholder="Teljes név" required>
-          <label for="email">Email cím</label>
-          <input id="email" name="email" type="email" placeholder="valami@pelda.hu" required>
-          <label for="tel">Telefonszám</label>
-          <input id="tel" name="tel" placeholder="+36 ...">
-          <label for="uzenet">Üzenet</label>
-          <textarea id="uzenet" name="uzenet" rows="5" placeholder="Írja meg röviden a feladatot..." required></textarea>
-          <button type="submit">Üzenet küldése</button>
-          <p style="margin:8px 0 0;font-size:13px;color:#6b7280">Megjegyzés: az email-címet később beállítjuk (jelenleg demó beküldés).</p>
-        </form>
-        <div class="card reveal">
-          <b>Cím</b><br>4100 Berettyóújfalu, Dózsa György utca 6 1/3<br><br>
-          <b>Telefon</b><br>+36 70 607 0675<br><br>
-          <b>E-mail</b><br>iroda@dgs-general.com <span style="color:var(--muted)">(később frissítendő)</span><br><br>
-          <b>Facebook</b><br><a href="https://www.facebook.com/szokeepkerkft" target="_blank" style="color:#93c5fd">/szokeepkerkft</a><br><br>
-          <iframe title="Térkép" src="https://www.google.com/maps?q=Beretty%C3%B3%C3%BAjfalu%2C%20D%C3%B3zsa%20Gy%C3%B6rgy%20utca%206&output=embed" width="100%" height="220" style="border:0;border-radius:12px"></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    © <span id="y"></span> Szőke Épker KFT. • Minden jog fenntartva
-  </footer>
-
-  <!-- Floating buttons -->
-  <a class="fb-float" href="https://www.facebook.com/szokeepkerkft" target="_blank" aria-label="Facebook">f</a>
-  <a class="sticky-cta" href="#ajanlat">Ingyenes ajánlatkérés</a>
-
-  <script>
-    // év a láblécben
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Mobilmenü
-    function toggleMenu(){
-      const m = document.getElementById('mm');
-      m.style.display = (m.style.display==='block') ? 'none' : 'block';
-    }
-
-    // Scroll-reveal (IntersectionObserver)
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
-      });
-    },{threshold:.15});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-    // Ha szeretnéd, hogy a sticky CTA elhalványuljon, ha a kapcsolatnál jár:
-    const sticky = document.querySelector('.sticky-cta');
-    const kontakt = document.getElementById('kapcsolat');
-    const hideIo = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        sticky.style.opacity = e.isIntersecting ? .0 : 1;
-        sticky.style.pointerEvents = e.isIntersecting ? 'none' : 'auto';
-      });
-    },{threshold:.4});
-    hideIo.observe(kontakt);
-  </script>
 </body>
 </html>
+
